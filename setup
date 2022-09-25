@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export PATH=$PATH:/home/edario/julia/julia-1.6.3/bin/
+julia -e 'using Pkg; Pkg.add("VirtualEnv")'
+export  PATH=$PATH:~/.julia/bin
+venv . && cp bin/activate bin/activate-jl
+source bin/activate-jl
+julia setup.jl
+
+deactivate
+
+python3.9 -m venv .
+source bin/activate
+pip install --upgrade pip setuptools
+pip install wheel Jupyter rdkit-pypi py3Dmol
